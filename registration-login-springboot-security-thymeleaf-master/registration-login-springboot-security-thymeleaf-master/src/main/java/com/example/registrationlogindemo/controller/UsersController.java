@@ -36,7 +36,6 @@ public class UsersController {
         if (result.hasErrors()) {
             return "users/edit";
         }
-
         userRepository.save(user);
         model.addAttribute("users", userRepository.findAll());
         return "users/index";

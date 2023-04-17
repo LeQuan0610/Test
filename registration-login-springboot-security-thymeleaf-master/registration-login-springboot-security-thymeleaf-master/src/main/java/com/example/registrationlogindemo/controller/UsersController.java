@@ -17,7 +17,7 @@ public class UsersController {
         this.userRepository = userRepository;
     }
 
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") long id) {
         userRepository.deleteById(id);
         return "redirect:/users";

@@ -11,20 +11,20 @@ import org.springframework.ui.Model;
 @Controller
 public class UsersController {
 
-    private final UserRepository userRepository; // khai báo đối tượng userRepository
+    private final UserRepository userRepository;
 
     public UsersController(UserRepository userRepository) {
-        this.userRepository = userRepository; // inject đối tượng userRepository vào trong constructor
+        this.userRepository = userRepository;
     }
 
-    @GetMapping("/users/delete/{id}")
-    public String deleteUser(@PathVariable Long id, Model model) {
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable("id") long id) {
         userRepository.deleteById(id);
-        model.addAttribute("users", userRepository.findAll());
-        return "users/index";
+        return "redirect:/users";
     }
+
     @GetMapping("/users/edit/{id}")
-    public String editUser(@PathVariable Long id, Model model) {
+    public String editUser(@PathVariable("id") Long id, Model model) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         model.addAttribute("user", user);
@@ -40,6 +40,5 @@ public class UsersController {
         model.addAttribute("users", userRepository.findAll());
         return "users/index";
     }
-
-
 }
+

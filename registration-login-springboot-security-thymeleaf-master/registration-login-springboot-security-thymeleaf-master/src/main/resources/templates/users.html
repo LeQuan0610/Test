@@ -51,12 +51,9 @@
             <td th:text="${user.email}"></td>
             <td>
                 <a th:href="@{/users/edit/{id}(id=${user.id})}" class="btn btn-sm btn-primary">Edit</a>
-                <a th:href="@{/users/delete/{id}(id=${user.id})}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
-<!--                <form th:action="@{/delete/{id}(id=${user.id})}" method="post">-->
-<!--                    <input type="hidden" name="_method" value="DELETE" />-->
-<!--                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
-<!--                    <button type="submit" class="btn btn-danger">Delete</button>-->
-<!--                </form>-->
+<!--                <a th:href="@{/users/delete/{id}(id=${user.id})}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>-->
+                <a href="@{/delete/{id}(id=${user.id})}" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng này?')">Xóa</a>
+
             </td>
         </tr>
         </tbody>

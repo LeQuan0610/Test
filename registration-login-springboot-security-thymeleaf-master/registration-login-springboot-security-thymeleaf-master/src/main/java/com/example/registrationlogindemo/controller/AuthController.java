@@ -4,6 +4,7 @@ import com.example.registrationlogindemo.dto.UserDto;
 import com.example.registrationlogindemo.entity.User;
 import com.example.registrationlogindemo.service.UserService;
 import jakarta.validation.Valid;
+import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -60,6 +61,9 @@ public class AuthController {
     @GetMapping("/users")
     public String listRegisteredUsers(Model model){
         List<UserDto> users = userService.findAllUsers();
+//        for(UserDto A : users){
+//            System.out.println(A.getId());
+//        }
         model.addAttribute("users", users);
         return "users";
     }

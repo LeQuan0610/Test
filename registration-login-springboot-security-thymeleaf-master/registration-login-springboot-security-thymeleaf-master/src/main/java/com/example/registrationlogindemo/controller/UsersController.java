@@ -19,9 +19,8 @@ public class UsersController {
 //        this.userRepository = userRepository;
 //    }
 
-    @GetMapping("/users/delete/{id}")
+    @GetMapping ("/users/delete/{id}")
         public String deleteUser(@PathVariable Long id) {
-        System.out.println(id);
         userRepository.deleteById(id);
         return "redirect:/users";
     }

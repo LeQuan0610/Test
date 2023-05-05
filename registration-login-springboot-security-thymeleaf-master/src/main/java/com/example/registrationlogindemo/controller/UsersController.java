@@ -23,12 +23,18 @@ public class UsersController {
         return "editUser";
     }
 
-    @GetMapping(value = "/delete/{id}")
-    public String deleteUser(@PathVariable Long id) {
-        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-        userRepository.delete(user);
+    @PostMapping("/delete/{id}")
+    public String deleteUser(@PathVariable("id") Long id) {
+        userRepository.deleteById(id);
         return "redirect:/users";
     }
+
+//    @DeleteMapping("/{id}")
+//    public String delete(@PathVariable("id") Long id) {
+//        userService.delete(id);
+//        return "redirect:/users";
+//    }
+
 
 
     @GetMapping("/users/edit/{id}")

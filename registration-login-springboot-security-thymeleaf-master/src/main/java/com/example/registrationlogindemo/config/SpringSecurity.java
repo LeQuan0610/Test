@@ -28,23 +28,25 @@ public class SpringSecurity {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers("/register/**").permitAll()
+                        authorize
+                                .requestMatchers("/register/**").permitAll()
                                 .requestMatchers("/index").permitAll()
                                 .requestMatchers("/users/**").permitAll()
                                 .requestMatchers("/users/edit/**").permitAll()
-                                .requestMatchers("/users/delete/**").permitAll())
+                                .requestMatchers("/users/delete/**").permitAll() // thêm đường dẫn này vào
+                )
                 .formLogin(
                         form -> form
                                 .loginPage("/login")
-                                .loginProcessingUrl("/login")
+//                                .loginProcessingUrl("/login")
                                 .defaultSuccessUrl("/users")
                                 .permitAll()
-                )
-                .logout(
+                ).logout(
                         logout -> logout
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                                 .permitAll()
                 );
+
         return http.build();
     }
 

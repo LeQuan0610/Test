@@ -54,6 +54,9 @@
 <!--                <a th:href="@{/users/delete/{id}(id=${user.id})}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>-->
                 <a th:href="@{/users/delete/{id}(id=${user.id})}" method="get" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng này?')">Xóa</a>
 <!--                <a th:href="@{'/delete/'+ ${user.id}}"class="btn btn-sm btn-primary">Delete</a>-->
+<!--                <form th:action="@{/users/delete/{id}(id=${user.id})}" method="post">-->
+<!--                        <button type="submit">Delete</button>-->
+<!--                </form>-->
             </td>
         </tr>
         </tbody>
